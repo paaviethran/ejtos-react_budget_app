@@ -1,36 +1,34 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+
 const Currency = () =>{
-    const {dispatch,currency} = useContext(AppContext)    
+    const {dispatch} = useContext(AppContext)    
     const getCurrency = (event)=>{
         dispatch({
             type: "CHG_CURRENCY",
             payload: event
         })
     }
-    list_of_currency = [
-        {id:"£", name:"Pounds"},
-        {id:"¢", name:"Euro"},
-        {id:"$", name:"Dollars"}
-    ]
+    
     return(
-        <div className="dropdown">
-            <button className="btn btn-success  dropdown-toggle" type="button" id="dropdownMenuButton" data-tog>
-                Currency:(
-                    {list_of_currency.map((opt)=>{
-                        if(currency === opt.id){
-                            <span>{opt.id}{opt.name}</span>
-                        }
-                    })}
-                )
-            </button>
-            <div className="dropdown-menu" onChange={(event)=>getCurrency(event.target.value)}>
-                <a className="dropdown-item" value="£" href="#" >£ Pounds</a>
-                <a className="dropdown-item" value="¢">¢ Euro </a>
-                <a className="dropdown-item" value="$">$ Dollars </a>
-            </div>
-            
-            
+        <div className="" style={{
+            color:"white",
+            padding:'1rem',
+            backgroundColor:"mediumseagreen",
+            borderRadius:'5px'
+        }} >Currency(
+            <select className="" name="currency" id="currency" onChange={(event)=>getCurrency(event.target.value)} style={{
+                background:"transparent",
+                border:"none",
+                outline:"none",
+                color:"white"
+            }}>
+                <option className="select-items" value="£" >£ Pounds</option>
+                <option value="$" >$ Dollars</option>
+                <option value="⍷" >⍷ Euro</option>
+                <option value="₹" >₹ Rupee</option>
+            </select> 
+        )
         </div>
     )
 }

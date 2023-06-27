@@ -33,7 +33,7 @@ const App = () => {
                     </div>
 
                 </div>
-                {/* <h3 className='mt-3'>Allocation</h3>
+                <h3 className='mt-3'>Allocation</h3>
                 <div className='row '>
                     <div className='col-sm'>
                         <ExpenseList />
@@ -44,7 +44,7 @@ const App = () => {
                     <div className='col-sm'>
                         <AllocationForm/>
                     </div>
-                </div> */}
+                </div>
             </div>
         </AppProvider>
     );
