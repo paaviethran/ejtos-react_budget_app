@@ -1,24 +1,36 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 const Currency = () =>{
-    const {dispatch} = useContext(AppContext)    
+    const {dispatch,currency} = useContext(AppContext)    
     const getCurrency = (event)=>{
         dispatch({
             type: "CHG_CURRENCY",
             payload: event
         })
     }
-
+    list_of_currency = [
+        {id:"£", name:"Pounds"},
+        {id:"¢", name:"Euro"},
+        {id:"$", name:"Dollars"}
+    ]
     return(
-        <div className="alert alert-success" >
-            <span>Currency(
-            <select className="input-group-prepend" id="inputGroupSelect01" onChange={(event) => getCurrency(event.target.value)}>
-                <option defaultValue value="£" name="dollars">Pounds</option>
-                <option value="⍷" name="euro"> Euro</option>
-                <option value="$" name="pounds">Dollars</option>
-                <option value="₹" name="rupee">Rupee</option>
-            </select>
-            )</span>
+        <div className="dropdown">
+            <button className="btn btn-success  dropdown-toggle" type="button" id="dropdownMenuButton" data-tog>
+                Currency:(
+                    {list_of_currency.map((opt)=>{
+                        if(currency === opt.id){
+                            <span>{opt.id}{opt.name}</span>
+                        }
+                    })}
+                )
+            </button>
+            <div className="dropdown-menu" onChange={(event)=>getCurrency(event.target.value)}>
+                <a className="dropdown-item" value="£" href="#" >£ Pounds</a>
+                <a className="dropdown-item" value="¢">¢ Euro </a>
+                <a className="dropdown-item" value="$">$ Dollars </a>
+            </div>
+            
+            
         </div>
     )
 }
